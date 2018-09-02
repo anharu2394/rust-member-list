@@ -84,7 +84,7 @@ fn main() {
             .expect("Failed to read line");
         let input_number: i32 = match input.trim().parse() {
             Ok(n) => n,
-            Err(_) => {println!("{}","Cannot parse");continue},
+            Err(_) => {println!("{}","Cannot parse".red().bold());continue},
         };
         match input_number {
             0 => new(&mut users),
