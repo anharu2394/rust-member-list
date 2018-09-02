@@ -7,8 +7,10 @@ struct User {
   age: u32,
 }
 
-fn new_user(name: String, age: u32) -> User {
-    User { name, age }
+impl User {
+    fn new_user(name: String, age: u32) -> User {
+        User { name, age }
+    }
 }
 
 fn show(users: &Vec<User>) {
@@ -31,7 +33,7 @@ fn new(users: &mut Vec<User>) {
     let mut age = String::new();
     io::stdin().read_line(&mut age)
         .expect("Failed to read line");
-    users.push(new_user(name.trim().to_string(),age.trim().parse::<u32>().unwrap()));
+    users.push(User::new_user(name.trim().to_string(),age.trim().parse::<u32>().unwrap()));
 }
 
 fn delete(users: &mut Vec<User>) {
@@ -64,7 +66,7 @@ fn update(users: &mut Vec<User>) {
     let mut age = String::new();
     io::stdin().read_line(&mut age)
         .expect("Failed to read line");
-    users.insert(id,new_user(name.trim().to_string(), age.trim().parse::<u32>().unwrap()));
+    users.insert(id,User::new_user(name.trim().to_string(), age.trim().parse::<u32>().unwrap()));
 }
 
 fn main() {
